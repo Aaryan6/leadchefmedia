@@ -27,13 +27,15 @@ const para = [
 
 const About = () => {
   return (
-    <div className="py-20 px-3 bg-slate-50">
+    <div className="py-20 px-4 bg-slate-50">
       <div className="max-w-6xl mx-auto">
         <div className="text-center">
-          <h2 className={`${outfit.className} text-4xl font-semibold`}>
+          <h2
+            className={`${outfit.className} text-3xl md:text-4xl font-semibold`}
+          >
             Who Are We?
           </h2>
-          <p className="mt-4 max-w-4xl mx-auto">
+          <p className="mt-4 max-w-4xl mx-auto text-sm md:text-base">
             We&apos;re a solar Leads and Apointment generation agency that helps
             solar companies by delivering top-tier, quote-ready
             leads/appointment through strategic advertising on popular social
@@ -44,19 +46,25 @@ const About = () => {
           </p>
         </div>
         <div className="pt-20">
-          <h2 className="text-3xl font-medium text-center">Our Process</h2>
-          <div className="grid grid-cols-3 justify-between gap-x-5 mt-10">
+          <h2 className="text-2xl md:text-3xl font-medium text-center">
+            Our Process
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-between gap-5 mt-10">
             {para.map((item, i) => (
               <div
-                className="flex gap-x-4 shadow-md py-10 px-4 bg-white"
+                className="flex gap-x-4 shadow-md py-10 px-4 bg-white w-full max-w-md mx-auto"
                 key={i}
               >
-                <div className="w-12 h-12 grid place-items-center bg-sky-500 text-lg text-white rounded-full">
+                <div className="w-10 h-10 md:w-12 md:h-12 grid place-items-center bg-sky-400 text-lg text-white rounded-full">
                   {i + 1}
                 </div>
                 <div className="flex-1">
-                  <h2 className="text-xl font-semibold">{item.title}</h2>
-                  <p className="mt-2 text-gray-700">{item.content}</p>
+                  <h2 className="text-lg md:text-xl font-semibold">
+                    {item.title}
+                  </h2>
+                  <p className="text-sm md:text-base mt-2 text-gray-700">
+                    {item.content}
+                  </p>
                 </div>
               </div>
             ))}

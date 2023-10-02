@@ -20,7 +20,7 @@ const Contact = () => {
       />
       <div className="max-w-2xl mx-auto z-20">
         <h1
-          className={`${outfit.className} text-center text-4xl font-medium text-white`}
+          className={`${outfit.className} text-center text-3xl md:text-4xl font-medium text-white`}
         >
           Get 15+ Extra Exclusive and Qualified Leads or Appointment
         </h1>

@@ -24,28 +24,43 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import Image from "next/image";
 
-export default function AccordionMenu() {
+export default function FAQ() {
   return (
-    <Accordion
-      type="single"
-      collapsible
-      className="w-full max-w-3xl mx-auto py-20 px-4"
-    >
-      {items.map((item, i) => (
-        <AccordionItem
-          value={i + 1}
-          key={i}
-          className="text-left border px-6 py-1 my-2"
-        >
-          <AccordionTrigger className="text-left">
-            {item.title}
-          </AccordionTrigger>
-          <AccordionContent className="whitespace-pre-wrap text-base text-gray-500">
-            {item.content}
-          </AccordionContent>
-        </AccordionItem>
-      ))}
-    </Accordion>
+    <div className="py-10 px-4">
+      <h1 className="font-bold text-center text-3xl mb-10">FAQ</h1>
+      <Accordion type="single" collapsible className="w-full max-w-3xl mx-auto">
+        {items.map((item, i) => (
+          <AccordionItem
+            value={i + 1}
+            key={i}
+            className="text-left border px-6 py-1 my-2"
+          >
+            <AccordionTrigger className="text-left">
+              {item.title}
+            </AccordionTrigger>
+            <AccordionContent className="whitespace-pre-wrap text-base text-gray-500">
+              {item.content}
+            </AccordionContent>
+          </AccordionItem>
+        ))}
+      </Accordion>
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-4 pt-16 max-w-xl mx-auto">
+        <div className="flex flex-col items-center text-center">
+          <Image src="/expert.png" alt="" width={80} height={80} />
+          <h3 className="font-medium text-sm mt-1">Industry Specialists</h3>
+        </div>
+        <div className="flex flex-col items-center text-center">
+          <Image src="/guarantee.png" alt="" width={80} height={80} />
+          <h3 className="font-medium text-sm mt-1">Guaranteed Results</h3>
+        </div>
+        <div className="flex flex-col items-center text-center">
+          <Image src="/leads.png" alt="" width={80} height={80} />
+          <h3 className="font-medium text-sm mt-1">Qualified Leads</h3>
+        </div>
+      </div>
+    </div>
   );
 }

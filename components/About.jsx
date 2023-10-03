@@ -55,7 +55,7 @@ const About = () => {
                 className="flex gap-x-4 shadow-md py-10 px-4 bg-white w-full max-w-md mx-auto"
                 key={i}
               >
-                <div className="w-10 h-10 md:w-12 md:h-12 grid place-items-center bg-sky-400 text-lg text-white rounded-full">
+                <div className="w-10 h-10 md:w-12 md:h-12 grid place-items-center bg-[#4593ff] text-lg text-white rounded-full">
                   {i + 1}
                 </div>
                 <div className="flex-1">

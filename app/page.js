@@ -1,5 +1,5 @@
 import About from "@/components/About";
-import AccordingMenu from "@/components/AccordingMenu";
+import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
@@ -12,7 +12,7 @@ export default function Home() {
       <Hero />
       <About />
       <Contact />
-      <AccordingMenu />
+      <FAQ />
       <Footer />
     </main>
   );

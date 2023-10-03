@@ -3,13 +3,13 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <div className="bg-white text-center py-3 px-3">
+    <div className="bg-white text-center py-5 px-3">
       <Image
-        src="/logo2.png"
+        src="/logo.png"
         alt="leadchef media"
         width={500}
         height={500}
-        className="h-16 md:h-20 w-auto mx-auto"
+        className="h-16 md:h-24 w-auto mx-auto"
       />
     </div>
   );

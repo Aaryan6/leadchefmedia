@@ -47,7 +47,10 @@ const Contact = () => {
   };
 
   return (
-    <div className="bg-cover py-20 px-2 grid place-items-center relative bg-black">
+    <section
+      id="contact"
+      className="bg-cover py-20 px-2 grid place-items-center relative bg-black"
+    >
       <Toaster />
       <Image
         src="https://images.pexels.com/photos/924824/pexels-photo-924824.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
@@ -62,7 +65,7 @@ const Contact = () => {
         >
           Get 15+ Extra Exclusive and Qualified Leads or Appointment
         </h1>
-        <h4 className="text-center text-xl font-medium text-sky-500 mt-2">
+        <h4 className="text-center text-xl font-medium text-[#4593ff] mt-2">
           Within 30 Days, or You Don’t Pay
         </h4>
         <form
@@ -111,13 +114,13 @@ const Contact = () => {
           />
           <button
             type="submit"
-            className={`${outfit.className} bg-sky-500 tracking-wider font-medium text-white w-full rounded-sm py-3 mt-5`}
+            className={`${outfit.className} bg-[#4593ff] tracking-wider font-medium text-white w-full rounded-sm py-3 mt-5`}
           >
             Get More Leads!
           </button>
         </form>
       </div>
-    </div>
+    </section>
   );
 };
 

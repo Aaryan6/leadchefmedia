@@ -14,7 +14,8 @@ const Footer = () => {
         />
       </div>
       <p className="text-center text-sm md:text-base">
-        <b>LeadChef</b> - {new Date().getFullYear()} &copy; All Rights Reserved
+        <b>LeadChefMedia</b> - {new Date().getFullYear()} &copy; All Rights
+        Reserved
       </p>
     </div>
   );

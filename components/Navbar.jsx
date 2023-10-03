@@ -9,7 +9,7 @@ const Navbar = () => {
         alt="leadchef media"
         width={500}
         height={500}
-        className="h-12 md:h-16 w-auto mx-auto"
+        className="h-16 md:h-20 w-auto mx-auto"
       />
     </div>
   );

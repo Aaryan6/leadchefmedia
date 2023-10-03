@@ -1,16 +1,54 @@
+"use client";
 import Image from "next/image";
 import React from "react";
+import { db } from "../firebase";
+import { doc, setDoc } from "firebase/firestore";
+
+import { Toaster } from "@/components/ui/toaster";
+import { useToast } from "@/components/ui/use-toast";
 
 import { Outfit } from "next/font/google";
-
 const outfit = Outfit({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
 const Contact = () => {
+  const { toast } = useToast();
+
+  const StoreInfo = async (e) => {
+    e.preventDefault();
+    const name = e.target[0].value;
+    const company_name = e.target[1].value;
+    const email = e.target[2].value;
+    const phone = e.target[3].value;
+    const date = new Date();
+
+    await setDoc(doc(db, "contacts", name + phone), {
+      name,
+      company_name,
+      email,
+      phone,
+      date,
+    })
+      .then((res) => {
+        toast({
+          title: `Thanks ${name}, with connecting us!`,
+          description: "We will contact you soon...",
+          close: 3,
+        });
+      })
+      .catch((error) => {
+        toast({
+          title: `Something is wrong! Please try again.`,
+          close: 2,
+        });
+      });
+  };
+
   return (
     <div className="bg-cover py-20 px-2 grid place-items-center relative bg-black">
+      <Toaster />
       <Image
         src="https://images.pexels.com/photos/924824/pexels-photo-924824.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         alt=""
@@ -27,22 +65,27 @@ const Contact = () => {
         <h4 className="text-center text-xl font-medium text-sky-500 mt-2">
           Within 30 Days, or You Don’t Pay
         </h4>
-        <form className="bg-white px-6 py-10 rounded-sm mt-8 grid max-w-lg mx-auto">
-          <label htmlFor="name" className="mt-3 mb-1.5">
+        <form
+          onSubmit={StoreInfo}
+          className="bg-white px-6 py-10 rounded-sm mt-8 grid max-w-lg mx-auto"
+        >
+          <label htmlFor="fullname" className="mt-3 mb-1.5">
             Full Name*
           </label>
           <input
             type="text"
             placeholder="Full Name"
+            name="fullname"
             required
             className="px-3 py-3 rounded-sm bg-slate-100 text-sm outline-none border"
           />
-          <label htmlFor="website" className="mt-3 mb-1.5">
-            Website*
+          <label htmlFor="companyname" className="mt-3 mb-1.5">
+            Company Name*
           </label>
           <input
             type="text"
-            placeholder="Web URL goes here"
+            placeholder="Company Name"
+            name="companyname"
             required
             className="px-3 py-3 rounded-sm bg-slate-100 text-sm outline-none border"
           />
@@ -52,6 +95,7 @@ const Contact = () => {
           <input
             type="email"
             placeholder="Email"
+            name="email"
             required
             className="px-3 py-3 rounded-sm bg-slate-100 text-sm outline-none border"
           />
@@ -61,6 +105,7 @@ const Contact = () => {
           <input
             type="tel"
             placeholder="phone"
+            name="phone"
             required
             className="px-3 py-3 rounded-sm bg-slate-100 text-sm outline-none border"
           />

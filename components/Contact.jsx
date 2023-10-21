@@ -1,8 +1,6 @@
 "use client";
 import Image from "next/image";
 import React from "react";
-import { db } from "../firebase";
-import { doc, setDoc } from "firebase/firestore";
 
 import { Toaster } from "@/components/ui/toaster";
 import { useToast } from "@/components/ui/use-toast";
@@ -12,7 +10,6 @@ const outfit = Outfit({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
-
 const Contact = () => {
   const { toast } = useToast();
 
@@ -22,28 +19,32 @@ const Contact = () => {
     const company_name = e.target[1].value;
     const email = e.target[2].value;
     const phone = e.target[3].value;
-    const date = new Date();
 
-    await setDoc(doc(db, "contacts", name + phone), {
-      name,
-      company_name,
-      email,
-      phone,
-      date,
-    })
-      .then((res) => {
-        toast({
-          title: `Thanks ${name}, with connecting us!`,
-          description: "We will contact you soon...",
-          close: 3,
-        });
-      })
-      .catch((error) => {
-        toast({
-          title: `Something is wrong! Please try again.`,
-          close: 2,
-        });
+    const response = await fetch("/api/email", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name,
+        company_name,
+        email,
+        phone,
+      }),
+    });
+
+    if (response.status == 200) {
+      toast({
+        title: `Thanks ${name}, with connecting us!`,
+        description: "We will contact you soon...",
+        close: 3,
       });
+    } else {
+      toast({
+        title: `Something is wrong! Please try again.`,
+        close: 2,
+      });
+    }
   };
 
   return (

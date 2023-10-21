@@ -1,0 +1,23 @@
+import { db } from "../firebase";
+import { doc, setDoc } from "firebase/firestore";
+
+await setDoc(doc(db, "contacts", name + phone), {
+  name,
+  company_name,
+  email,
+  phone,
+  date,
+})
+  .then((res) => {
+    toast({
+      title: `Thanks ${name}, with connecting us!`,
+      description: "We will contact you soon...",
+      close: 3,
+    });
+  })
+  .catch((error) => {
+    toast({
+      title: `Something is wrong! Please try again.`,
+      close: 2,
+    });
+  });
